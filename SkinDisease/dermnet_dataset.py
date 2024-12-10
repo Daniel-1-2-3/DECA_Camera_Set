@@ -34,7 +34,7 @@ class DermNet(Dataset):
             "Viral Infection": 13
         }
         
-        self.img_dim = (512, 512) # Resize to this dimension
+        self.img_dim = (300, 300) # Resize to this dimension
         print("Sample Data:", self.data[0:3])
         
     def __len__(self):
