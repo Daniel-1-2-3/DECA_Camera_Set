@@ -36,10 +36,14 @@ if __name__ == "__main__": # Prevents several instances of this script from bein
 
     # Training
     epochs = int(input("Train for epochs: "))
+    print(len(train_dataloader))
     for epoch in range(int(epochs)):
         running_loss = 0
         for i, data in enumerate(train_dataloader):
             inputs, labels = data
+            inputs = inputs.to(torch.float32)
+            labels = labels.squeeze(1)
+
             optimizer.zero_grad() # Zero gradient params
             outputs = net(inputs) # Forward pass
             loss = criterion(outputs, labels) # Computes loss
