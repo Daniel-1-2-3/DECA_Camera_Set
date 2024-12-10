@@ -17,7 +17,7 @@ if __name__ == "__main__": # Prevents several instances of this script from bein
     trainset = DermNet()
     train_dataloader = torch.utils.data.DataLoader(trainset, batch_size=4, shuffle=True, num_workers=1)
     classes = ('Acne', 'Atopic Dermatitis', 'Bacterial Infection', 'Bengin Tumor', 'Bullous Disease',
-            'Eczema', 'Lupus', 'Lyme Disease', 'Malignant Lesions', 'Mole', 'Nail Fungus', 'Poison Ivy',
+            'Eczema', 'Lupus', 'Lyme Disease', 'Malignant Lesions (Cancer)', 'Mole', 'Nail Fungus', 'Poison Ivy',
             'STD', 'Viral Infection')
 
     # Define a neural network

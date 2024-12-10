@@ -26,7 +26,7 @@ class DermNet(Dataset):
             "Eczema": 5,
             "Lupus": 6,
             "Lyme Disease": 7,
-            "Malignant Lesions": 8, 
+            "Malignant Lesions (Cancer)": 8, 
             "Mole": 9,
             "Nail Fungus": 10,
             "Poison Ivy": 11,
