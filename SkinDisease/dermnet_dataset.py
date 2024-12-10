@@ -2,21 +2,21 @@ import glob
 import cv2
 import numpy as np
 import torch
-from torch.utils.data import Dataset, DataLoader
+import os
+from torch.utils.data import Dataset
 
 class DermNet(Dataset):
     def __init__(self):
-        self.imgs_path = "DermNet/train/"
-        file_list = glob.glob(self.imgs_path + "*")
+        self.imgs_path = 'C:\\Daniel\\High School\\Python\\Disease_Classification\\SkinDisease\\DermNet\\train\\*'
+        file_list = glob.glob(self.imgs_path) 
         self.data = []
         
         for class_path in file_list:
-            class_name = class_path.split("/")[-1]
-            # Only take files with jpeg type
-            for img_path in glob.glob(class_path + "/*.jpeg"):
+            class_name = class_path.split("\\")[-1]
+            # Only take files with jpg type
+            for img_path in glob.glob(class_path + "\\*.jpg"):
                 self.data.append([img_path, class_name])
-            
-        print(self.data[10])
+    
         self.class_map = {
             "Acne": 0,
             "Atopic Dermatitis": 1,
@@ -34,7 +34,8 @@ class DermNet(Dataset):
             "Viral Infection": 13
         }
         
-        self.img_dim = (416, 416) # Resize to this dimension
+        self.img_dim = (512, 512) # Resize to this dimension
+        print("Sample Data:", self.data[0:3])
         
     def __len__(self):
         return len(self.data)
@@ -50,3 +51,6 @@ class DermNet(Dataset):
         
         class_id = torch.tensor([class_id])
         return img_tensor, class_id
+
+if __name__ == "__name__":
+    dataset = DermNet()
